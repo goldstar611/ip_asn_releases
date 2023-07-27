@@ -1,4 +1,4 @@
-name: CI
+name: Compile IP/ASN Lookup
 
 on:
   push:
@@ -24,9 +24,10 @@ jobs:
 
       - name: Release IPASN.txt
         run: |
-          gh release create --latest (Get-Date).ToString('yyyy-MM-dd') IPASN.txt
-          if(!($?)) {
-          gh release upload --clobber (Get-Date).ToString('yyyy-MM-dd') IPASN.txt
+          tag=$(date +%Y%m%d)
+          gh release create --latest ${tag} IPASN.txt
+          if (!($?)) {
+            gh release upload --clobber ${tag} IPASN.txt
           }
         env:
             GH_REPO: ${{ github.repository }}
