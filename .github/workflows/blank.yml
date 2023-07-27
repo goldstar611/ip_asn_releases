@@ -25,9 +25,7 @@ jobs:
       - name: Release IPASN.txt
         run: |
           tag=$(date +%Y%m%d)
-          gh release create --latest ${tag} IPASN.txt
-          if (!($?)) {
-            gh release upload --clobber ${tag} IPASN.txt
+          gh release create --latest ${tag} IPASN.txt || gh release upload --clobber ${tag} IPASN.txt
           }
         env:
             GH_REPO: ${{ github.repository }}
