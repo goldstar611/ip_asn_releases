@@ -18,15 +18,14 @@ jobs:
 
       - name: Download and convert IP/ASN files
         run: |
-          cd pyasn/pyasn-utils/
-          python3 pyasn_util_download.py --latestv4
-          python3 pyasn_util_convert.py --single *.bz2 IPASN.txt
+          python3 pyasn/pyasn-utils/pyasn_util_download.py --latestv4
+          python3 pyasn/pyasn-utils/pyasn_util_convert.py --single *.bz2 IPASN.txt
 
       - name: Release IPASN.txt
         run: |
-          gh release create --latest (Get-Date).ToString('yyyy-MM-dd') pyasn/pyasn-utils/IPASN.txt
+          gh release create --latest (Get-Date).ToString('yyyy-MM-dd') IPASN.txt
           if(!($?)) {
-          gh release upload --clobber (Get-Date).ToString('yyyy-MM-dd') pyasn/pyasn-utils/IPASN.txt
+          gh release upload --clobber (Get-Date).ToString('yyyy-MM-dd') IPASN.txt
           }
         env:
             GH_REPO: ${{ github.repository }}
