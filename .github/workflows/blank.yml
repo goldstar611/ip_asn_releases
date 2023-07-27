@@ -18,6 +18,7 @@ jobs:
 
       - name: Download and convert IP/ASN files
         run: |
+          pip install pyasn
           python3 pyasn/pyasn-utils/pyasn_util_download.py --latestv4
           python3 pyasn/pyasn-utils/pyasn_util_convert.py --single *.bz2 IPASN.txt
 
