@@ -26,7 +26,6 @@ jobs:
         run: |
           tag=$(date +%Y%m%d)
           gh release create --latest ${tag} IPASN.txt || gh release upload --clobber ${tag} IPASN.txt
-          }
         env:
             GH_REPO: ${{ github.repository }}
             GH_TOKEN: ${{ github.token }}
