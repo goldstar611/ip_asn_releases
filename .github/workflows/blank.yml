@@ -21,11 +21,12 @@ jobs:
           pip install pyasn
           python3 pyasn/pyasn-utils/pyasn_util_download.py --latestv4
           python3 pyasn/pyasn-utils/pyasn_util_convert.py --single *.bz2 IPASN.txt
+          python3 txt_to_json.py
 
       - name: Release IPASN.txt
         run: |
           tag=$(date +%Y%m%d)
-          gh release create --latest ${tag} IPASN.txt || gh release upload --clobber ${tag} IPASN.txt
+          gh release create --latest ${tag} IPASN.txt || gh release upload --clobber ${tag} IPASN.json
         env:
             GH_REPO: ${{ github.repository }}
             GH_TOKEN: ${{ github.token }}
