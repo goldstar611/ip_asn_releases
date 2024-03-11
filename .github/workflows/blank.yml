@@ -25,10 +25,10 @@ jobs:
           python3 pyasn/pyasn-utils/pyasn_util_convert.py --single *.bz2 IPASN.txt
           python3 txt_to_json.py
 
-      - name: Release IPASN.txt
+      - name: Release IPASN.json
         run: |
           tag=$(date +%Y%m%d)
-          gh release create --latest ${tag} IPASN.txt || gh release upload --clobber ${tag} IPASN.json
+          gh release create --latest ${tag} IPASN.json || gh release upload --clobber ${tag} IPASN.json
         env:
             GH_REPO: ${{ github.repository }}
             GH_TOKEN: ${{ github.token }}
