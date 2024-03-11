@@ -12,11 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - uses: actions/checkout@v3
         with:
           repository: hadiasghari/pyasn
           path: pyasn
-
-      - uses: actions/checkout@v3
 
       - name: Download and convert IP/ASN files
         run: |
