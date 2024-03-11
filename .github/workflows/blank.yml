@@ -16,13 +16,13 @@ jobs:
           repository: hadiasghari/pyasn
           path: pyasn
 
+      - uses: actions/checkout@v3
+
       - name: Download and convert IP/ASN files
         run: |
           pip install pyasn
           python3 pyasn/pyasn-utils/pyasn_util_download.py --latestv4
           python3 pyasn/pyasn-utils/pyasn_util_convert.py --single *.bz2 IPASN.txt
-          pwd
-          ls
           python3 txt_to_json.py
 
       - name: Release IPASN.txt
